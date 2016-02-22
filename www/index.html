@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Sacar fotos</title>
+
+ 
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+
+document.addEventListener("deviceready",onDeviceReady,false);
+ 
+
+	function onDeviceReady() {
+		navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
+			destinationType: Camera.DestinationType.FILE_URI });
+	}
+
+	function onSuccess(imageURI) {
+		var image = document.getElementById('miImagen');
+		image.src = imageURI;
+	}
+
+	function onFail(message) {
+		alert('Failed because: ' + message);
+	}
+
+</script>
+
+</head>
+
+<body>
+
+<input type="button" onClick="onDeviceReady();" value="Hacer foto" />
+
+<img src="" id="miImagen" width="100%" />
+
+</body>
+
+</html>
